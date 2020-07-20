@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.zeroemotion.btsmovie.data.model.Movie" />
+
+        <variable
+            name="listener"
+            type="com.zeroemotion.btsmovie.util.CustomOnClick" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="@{movie.title}"
+        android:onClick="@{listener::onViewClicked}">
+
+<!--        <TextView-->
+<!--            android:id="@+id/movieId"-->
+<!--            android:visibility="gone"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@{String.valueOf(movie.id)}"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <ImageView
+            android:id="@+id/movieImageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:contentDescription="@string/list_of_movie_genre_image"
+            android:imageUrl="@{movie.posterPath}"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/movieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="#afff"
+            android:gravity="center"
+            android:maxLength="15"
+            android:text="@{movie.title}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/movieImageView"
+            app:layout_constraintEnd_toEndOf="@id/movieImageView"
+            app:layout_constraintStart_toStartOf="@id/movieImageView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
