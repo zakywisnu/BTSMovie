@@ -31,9 +31,14 @@ class ReviewAdapter(private val reviewList: ArrayList<Review>) :
     override fun getItemCount() = reviewList.size
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
-        holder.view.review = reviewList[position]
+//        holder.view.review = reviewList[position]
+        holder.bind(reviewList[position])
     }
 
     class ReviewViewHolder(var view: ItemReviewBinding) : RecyclerView.ViewHolder(view.root) {
+        fun bind(review: Review?){
+            view.tvAuthor.text = review?.author
+            view.tvContent.text = review?.content
+        }
     }
 }

@@ -59,9 +59,7 @@ class DetailFragment : Fragment() {
         }
 
         dataBinding.movieDetail = movies
-        viewModel.fetchReview(movies?.id)
         viewModel.fetchTrailer(movies?.id)
-        viewModel.fetchDetail(movies?.id)
 
         rvTrailer.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)

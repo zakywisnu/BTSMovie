@@ -15,11 +15,12 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.functions.BiFunction
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
-class DetailViewModel(application: Application) : BaseViewModel(application){
+class DetailViewModel(application: Application) : BaseViewModel(application) {
     val review = MutableLiveData<ArrayList<Review>>()
     val trailer = MutableLiveData<ArrayList<Trailer>>()
     val reviewLoad = MutableLiveData<Boolean>()
@@ -28,27 +29,6 @@ class DetailViewModel(application: Application) : BaseViewModel(application){
     private val movieService = MovieService()
 
 
-    fun fetchReview(id: Int?){
-        reviewLoad.value = true
-        disposable.add(
-            movieService.getReviews(id)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<ReviewResponse>(){
-                    override fun onComplete() {
-                        reviewLoad.value = false
-                    }
-
-                    override fun onNext(t: ReviewResponse) {
-                        review.value = t.results
-                    }
-
-                    override fun onError(e: Throwable) {
-                        e.printStackTrace()
-                    }
-                })
-        )
-    }
 
     fun fetchTrailer(id: Int?){
         trailerLoad.value = true
@@ -74,6 +54,7 @@ class DetailViewModel(application: Application) : BaseViewModel(application){
 
         )
     }
+
 
     override fun onCleared() {
         super.onCleared()
