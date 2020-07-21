@@ -1,12 +1,11 @@
 package com.zeroemotion.btsmovie.ui.detail
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -68,10 +67,10 @@ class DetailFragment : Fragment() {
             isNestedScrollingEnabled = false
         }
 
-        rvReviews.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = reviewAdapter
-        }
+//        rvReviews.apply {
+//            layoutManager = LinearLayoutManager(context)
+//            adapter = reviewAdapter
+//        }
 
         observeViewModel()
 
@@ -87,24 +86,24 @@ class DetailFragment : Fragment() {
 
         viewModel.trailerLoad.observe(viewLifecycleOwner, Observer { trailLoad ->
             trailLoad?.let {
-                trailerLoading.visibility = if(it) View.VISIBLE else View.GONE
+                trailerLoading.visibility = if (it) View.VISIBLE else View.GONE
                 if (it) rvTrailer.visibility = View.GONE
             }
         })
 
-        viewModel.review.observe(viewLifecycleOwner, Observer { review ->
-            review?.let {
-                rvReviews.visibility = View.VISIBLE
-                reviewAdapter.updateReview(review)
-            }
-        })
+//        viewModel.review.observe(viewLifecycleOwner, Observer { review ->
+//            review?.let {
+//                rvReviews.visibility = View.VISIBLE
+//                reviewAdapter.updateReview(review)
+//            }
+//        })
 
-        viewModel.reviewLoad.observe(viewLifecycleOwner, Observer { reviewLoad ->
-            reviewLoad?.let {
-                reviewLoading.visibility = if (it) View.VISIBLE else View.GONE
-                if (it) rvReviews.visibility = View.GONE
-            }
-        })
+//        viewModel.reviewLoad.observe(viewLifecycleOwner, Observer { reviewLoad ->
+//            reviewLoad?.let {
+//                reviewLoading.visibility = if (it) View.VISIBLE else View.GONE
+//                if (it) rvReviews.visibility = View.GONE
+//            }
+//        })
     }
 
 }

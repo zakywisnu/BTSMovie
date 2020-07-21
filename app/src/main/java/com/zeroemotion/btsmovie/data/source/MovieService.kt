@@ -27,15 +27,15 @@ class MovieService {
         return retrofit.getMovieListByGenre(genre)
     }
 
-    fun getMovieDetail(id: Int?): Single<MovieResponse>{
+    fun getMovieDetail(id: Int?): Single<MovieResponse> {
         return retrofit.getMovieDetail(id)
     }
 
-    fun getTrailers(id: Int?): Observable<TrailerResponse>{
+    fun getTrailers(id: Int?): Observable<TrailerResponse> {
         return retrofit.getTrailers(id)
     }
 
-    fun getReviews(id: Int?): Observable<ReviewResponse>{
+    fun getReviews(id: Int?): Observable<ReviewResponse> {
         return retrofit.getReviews(id)
     }
 }

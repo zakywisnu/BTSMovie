@@ -12,12 +12,12 @@ import com.zeroemotion.btsmovie.databinding.ItemMovieBinding
 import com.zeroemotion.btsmovie.util.CustomOnClick
 import com.zeroemotion.btsmovie.util.getProgressDrawable
 import com.zeroemotion.btsmovie.util.loadImage
-import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MovieAdapter (private val movieList: ArrayList<Movie>): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(),
+class MovieAdapter(private val movieList: ArrayList<Movie>) :
+    RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(),
     CustomOnClick {
 
-    fun updateMoveList(newList: List<Movie>){
+    fun updateMoveList(newList: List<Movie>) {
         movieList.clear()
         movieList.addAll(newList)
         notifyDataSetChanged()
@@ -25,7 +25,8 @@ class MovieAdapter (private val movieList: ArrayList<Movie>): RecyclerView.Adapt
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = DataBindingUtil.inflate<ItemMovieBinding>(inflater, R.layout.item_movie, parent, false)
+        val view =
+            DataBindingUtil.inflate<ItemMovieBinding>(inflater, R.layout.item_movie, parent, false)
         return MovieViewHolder(
             view
         )
@@ -35,7 +36,6 @@ class MovieAdapter (private val movieList: ArrayList<Movie>): RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.view.movie = movieList[position]
-//        holder.view.movieId.text = movieList[position].id.toString()
         holder.view.listener = this
         holder.view.movieImageView.loadImage(
             movieList[position].posterPath,
@@ -44,20 +44,15 @@ class MovieAdapter (private val movieList: ArrayList<Movie>): RecyclerView.Adapt
     }
 
     override fun onViewClicked(v: View) {
-//        val movieId = v.movieId.text.toString().toInt()
-//        val action = MovieFragmentDirections.actionDetailFragment()
-//        action.idMovie = movieId
-//        Navigation.findNavController(v).navigate(action)
-
-        for (movie in movieList){
-            if (v.tag == movie.title){
+        for (movie in movieList) {
+            if (v.tag == movie.title) {
                 val action = MovieFragmentDirections.actionDetailFragment(movie)
                 Navigation.findNavController(v).navigate(action)
             }
         }
     }
 
-    class MovieViewHolder(var view: ItemMovieBinding): RecyclerView.ViewHolder(view.root) {
+    class MovieViewHolder(var view: ItemMovieBinding) : RecyclerView.ViewHolder(view.root) {
 
     }
 

@@ -2,8 +2,6 @@ package com.zeroemotion.btsmovie.data.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.zeroemotion.btsmovie.data.source.response.ReviewResponse
-import com.zeroemotion.btsmovie.data.source.response.TrailerResponse
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

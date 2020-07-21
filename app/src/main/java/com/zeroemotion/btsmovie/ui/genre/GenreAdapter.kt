@@ -52,5 +52,4 @@ class GenreAdapter(val listGenre: ArrayList<Genre>) :
     }
 
 
-
 }

@@ -2,22 +2,14 @@ package com.zeroemotion.btsmovie.ui.detail
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.zeroemotion.btsmovie.data.model.Movie
 import com.zeroemotion.btsmovie.data.model.Review
 import com.zeroemotion.btsmovie.data.model.Trailer
 import com.zeroemotion.btsmovie.data.source.MovieService
-import com.zeroemotion.btsmovie.data.source.response.MovieResponse
-import com.zeroemotion.btsmovie.data.source.response.ReviewResponse
 import com.zeroemotion.btsmovie.data.source.response.TrailerResponse
 import com.zeroemotion.btsmovie.ui.base.BaseViewModel
-import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.functions.BiFunction
 import io.reactivex.observers.DisposableObserver
-import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 class DetailViewModel(application: Application) : BaseViewModel(application) {

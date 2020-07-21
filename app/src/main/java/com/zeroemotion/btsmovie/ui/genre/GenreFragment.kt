@@ -1,11 +1,11 @@
 package com.zeroemotion.btsmovie.ui.genre
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +25,7 @@ class GenreFragment : Fragment() {
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_genre, container, false)
         return dataBinding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,7 +39,7 @@ class GenreFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.genre.observe(viewLifecycleOwner, Observer {genres ->
+        viewModel.genre.observe(viewLifecycleOwner, Observer { genres ->
             genres?.let {
                 rvGenre.visibility = View.VISIBLE
                 genreAdapter.updateListGenre(genres)
@@ -46,14 +47,14 @@ class GenreFragment : Fragment() {
         })
         viewModel.genreError.observe(viewLifecycleOwner, Observer { errors ->
             errors?.let {
-                genreError.visibility = if(it) View.VISIBLE else View.GONE
+                genreError.visibility = if (it) View.VISIBLE else View.GONE
             }
         })
 
         viewModel.genreLoading.observe(viewLifecycleOwner, Observer { loading ->
             loading?.let {
                 genreLoading.visibility = if (it) View.VISIBLE else View.GONE
-                if (it){
+                if (it) {
                     rvGenre.visibility = View.GONE
                     genreError.visibility = View.GONE
                 }

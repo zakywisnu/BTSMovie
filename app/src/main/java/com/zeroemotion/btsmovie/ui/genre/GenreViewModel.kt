@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 
-class GenreViewModel(application: Application): BaseViewModel(application){
+class GenreViewModel(application: Application) : BaseViewModel(application) {
     val genre = MutableLiveData<ArrayList<Genre>>()
     val genreLoading = MutableLiveData<Boolean>()
     val genreError = MutableLiveData<Boolean>()
@@ -19,13 +19,13 @@ class GenreViewModel(application: Application): BaseViewModel(application){
     private val movieService =
         MovieService()
 
-    fun fetchGenre(){
+    fun fetchGenre() {
         genreLoading.value = true
         disposable.add(
             movieService.getMovieGenre()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<GenreResponse>(){
+                .subscribeWith(object : DisposableObserver<GenreResponse>() {
                     override fun onComplete() {
                         genreLoading.value = false
                     }
